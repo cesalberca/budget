@@ -1,3 +1,3 @@
-function hello() {
+export function main() {
     Logger.log('hi!')
 }

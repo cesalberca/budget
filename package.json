@@ -6,8 +6,9 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node src/main.ts",
-    "build": "rollup src/main.ts --file dist/bundle.js --format cjs",
-    "deploy": "clasp push",
+    "build": "rollup --config",
+    "deploy": "npm run build && node scripts/parse.js && clasp push",
+    "format": "prettier --write",
     "open": "clasp open",
     "test": "jest"
   },
