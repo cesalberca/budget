@@ -91,3 +91,4 @@ typings/
 
 .idea
 dist/
+.clasp.json
