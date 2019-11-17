@@ -1,0 +1,38 @@
+{
+  "name": "budget",
+  "version": "1.0.0",
+  "description": "Budget planner",
+  "repository": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node src/main.ts",
+    "test": "jest"
+  },
+  "author": "César Alberca <cesalberca@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@google/clasp": "2.3.0"
+  },
+  "devDependencies": {
+    "@babel/preset-typescript": "7.7.2",
+    "@types/jest": "24.0.23",
+    "@types/node": "12.12.8",
+    "husky": "3.0.9",
+    "jest": "24.9.0",
+    "lint-staged": "9.4.3",
+    "prettier": "1.19.1",
+    "ts-node": "8.5.2",
+    "typescript": "3.7.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,css,json,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  }
+}
