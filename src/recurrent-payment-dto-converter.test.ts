@@ -1,10 +1,10 @@
-import { RecurrentDtoConverter } from './recurrent-dto-converter'
-import { Recurrent } from './recurrent'
+import { RecurrentPaymentDtoConverter } from './recurrent-payment-dto-converter'
+import { RecurrentPayment } from './recurrent-payment'
 
-describe('RecurrentDtoConverter', () => {
+describe('RecurrentPaymentDtoConverter', () => {
   it('should convert tuple to object', () => {
     const { recurrentDtoConverter } = setup()
-    const expected: Recurrent = {
+    const expected: RecurrentPayment = {
       detail: 'a',
       debtor: 'b',
       type: 'c',
@@ -19,6 +19,6 @@ describe('RecurrentDtoConverter', () => {
 
 function setup() {
   return {
-    recurrentDtoConverter: new RecurrentDtoConverter()
+    recurrentDtoConverter: new RecurrentPaymentDtoConverter()
   }
 }

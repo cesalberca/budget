@@ -1,10 +1,10 @@
-import { RecurrentDto } from './recurrent-dto'
+import { RecurrentPaymentDto } from './recurrent-payment-dto'
 import { StringUtils } from './string-utils'
 
 export function main() {
   const recurrent = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Recurrent')!
   const recurrentPayments = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('RecurrentPayments')!
-  const data = recurrent.getDataRange().getValues() as RecurrentDto[]
+  const data = recurrent.getDataRange().getValues() as RecurrentPaymentDto[]
 
   data.forEach(row => {
     Logger.log(recurrentPayments.getLastRow())

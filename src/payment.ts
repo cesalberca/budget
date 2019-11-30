@@ -1,4 +1,4 @@
-export interface Recurrent {
+export interface Payment {
   detail: string
   debtor: string
   type: string
