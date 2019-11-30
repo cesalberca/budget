@@ -1,7 +1,7 @@
 import { RecurrentPaymentSheetsRepository } from './recurrent-payment-sheets-repository'
-import { RecurrentPayment } from './recurrent-payment'
-import { RecurrentPaymentDto } from './recurrent-payment-dto'
-import { Converter } from './converter'
+import { RecurrentPayment } from '../domain/recurrent-payment'
+import { RecurrentPaymentDto } from '../domain/recurrent-payment-dto'
+import { Converter } from '../domain/converter'
 import { instance, mock, verify } from 'ts-mockito'
 import SpreadsheetApp = GoogleAppsScript.Spreadsheet.SpreadsheetApp
 

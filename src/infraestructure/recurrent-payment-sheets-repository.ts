@@ -1,7 +1,7 @@
-import { RecurrentPaymentRepository } from './recurrent-payment-repository'
-import { RecurrentPayment } from './recurrent-payment'
-import { RecurrentPaymentDto } from './recurrent-payment-dto'
-import { Converter } from './converter'
+import { RecurrentPaymentRepository } from '../domain/recurrent-payment-repository'
+import { RecurrentPayment } from '../domain/recurrent-payment'
+import { RecurrentPaymentDto } from '../domain/recurrent-payment-dto'
+import { Converter } from '../domain/converter'
 import SpreadsheetApp = GoogleAppsScript.Spreadsheet.SpreadsheetApp
 
 export class RecurrentPaymentSheetsRepository implements RecurrentPaymentRepository {

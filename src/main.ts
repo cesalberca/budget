@@ -1,5 +1,5 @@
-import { RecurrentPaymentDto } from './recurrent-payment-dto'
-import { StringUtils } from './string-utils'
+import { RecurrentPaymentDto } from './domain/recurrent-payment-dto'
+import { StringUtils } from './domain/string-utils'
 
 export function main() {
   const recurrent = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Recurrent')!
