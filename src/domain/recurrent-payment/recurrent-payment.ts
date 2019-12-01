@@ -1,3 +1,3 @@
-import { Payment } from './payment'
+import { Payment } from '../payment'
 
 export interface RecurrentPayment extends Payment {}

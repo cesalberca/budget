@@ -1,4 +1,4 @@
-import { Converter } from './converter'
+import { Converter } from '../converter'
 import { RecurrentPaymentDto } from './recurrent-payment-dto'
 import { RecurrentPayment } from './recurrent-payment'
 

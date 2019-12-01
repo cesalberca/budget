@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "strict": true,
+    "target": "es5",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "lib": ["esnext"],
