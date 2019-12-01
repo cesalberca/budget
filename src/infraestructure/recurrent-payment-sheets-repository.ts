@@ -11,17 +11,18 @@ export class RecurrentPaymentSheetsRepository implements RecurrentPaymentReposit
     private readonly recurrentPaymentConverter: RecurrentPaymentConverter
   ) {}
 
-  async findAll(): Promise<RecurrentPayment[]> {
+  findAll(): RecurrentPayment[] {
     const recurrent = this.spreadsheetApp.getActiveSpreadsheet().getSheetByName('Recurrent')!
     const data = recurrent.getDataRange().getValues() as RecurrentPaymentDto[]
     return data.map(this.recurrentPaymentDtoConverter.convert)
   }
 
-  async create(entity: RecurrentPayment): Promise<void> {
-    const recurrent = this.spreadsheetApp.getActiveSpreadsheet().getSheetByName('Recurrent')!
+  create(recurrentPayment: RecurrentPayment): void {
+    const recurrent = this.spreadsheetApp.getActiveSpreadsheet().getSheetByName('RecurrentPayments')!
+    const entity = this.recurrentPaymentConverter.convert(recurrentPayment)
     recurrent
-      .insertRowBefore(0)
-      .getRange(1, 1)
-      .setValue(this.recurrentPaymentConverter.convert(entity))
+      .insertRowBefore(2)
+      .getRange(2, 1, 1, entity.length)
+      .setValues([entity])
   }
 }

@@ -1,3 +1,3 @@
 export interface FindableAll<Entity> {
-  findAll(): Promise<Entity[]>
+  findAll(): Entity[]
 }

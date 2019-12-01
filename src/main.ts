@@ -1,5 +1,3 @@
-import 'core-js/stable'
-import 'regenerator-runtime/runtime'
 import { RecurrentPaymentSheetsRepository } from './infraestructure/recurrent-payment-sheets-repository'
 import { RecurrentPaymentDtoConverter } from './domain/recurrent-payment/recurrent-payment-dto-converter'
 import { RecurrentPaymentConverter } from './domain/recurrent-payment/recurrent-payment-converter'
