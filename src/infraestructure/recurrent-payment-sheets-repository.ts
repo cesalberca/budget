@@ -14,7 +14,7 @@ export class RecurrentPaymentSheetsRepository implements RecurrentPaymentReposit
   findAll(): RecurrentPayment[] {
     const recurrent = this.spreadsheetApp.getActiveSpreadsheet().getSheetByName('Recurrent')!
     const data = recurrent.getDataRange().getValues() as RecurrentPaymentDto[]
-    return data.map(this.recurrentPaymentDtoConverter.convert)
+    return data.slice(1).map(this.recurrentPaymentDtoConverter.convert)
   }
 
   create(recurrentPayment: RecurrentPayment): void {
@@ -22,7 +22,7 @@ export class RecurrentPaymentSheetsRepository implements RecurrentPaymentReposit
     const entity = this.recurrentPaymentConverter.convert(recurrentPayment)
     recurrent
       .insertRowBefore(2)
-      .getRange(2, 1, 1, entity.length)
-      .setValues([entity])
+      .getRange(2, 1, 1, entity.length + 1)
+      .setValues([[...entity, new Date()]])
   }
 }
