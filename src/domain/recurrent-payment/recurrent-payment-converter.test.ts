@@ -4,12 +4,13 @@ import { RecurrentPaymentConverter } from './recurrent-payment-converter'
 describe('RecurrentPaymentDtoConverter', () => {
   it('should convert tuple to object', () => {
     const { recurrentPaymentConverter } = setup()
-    const expected: RecurrentPaymentDto = ['a', 'b', 'c', 1]
+    const expected: RecurrentPaymentDto = ['a', 'b', 'c', 'd', 1]
 
     const actual = recurrentPaymentConverter.convert({
       detail: 'a',
-      debtor: 'b',
-      type: 'c',
+      payer: 'b',
+      debtor: 'c',
+      type: 'd',
       quantity: 1
     })
 

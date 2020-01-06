@@ -6,12 +6,13 @@ describe('RecurrentPaymentDtoConverter', () => {
     const { recurrentDtoConverter } = setup()
     const expected: RecurrentPayment = {
       detail: 'a',
-      debtor: 'b',
-      type: 'c',
+      payer: 'b',
+      debtor: 'c',
+      type: 'd',
       quantity: 1
     }
 
-    const actual = recurrentDtoConverter.convert(['a', 'b', 'c', 1])
+    const actual = recurrentDtoConverter.convert(['a', 'b', 'c', 'd', 1])
 
     expect(actual).toEqual(expected)
   })
