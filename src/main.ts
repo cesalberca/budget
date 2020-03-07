@@ -1,13 +1,12 @@
-import { RecurrentPaymentSheetsRepository } from './infraestructure/recurrent-payment-sheets-repository'
-import { RecurrentPaymentDtoConverter } from './domain/recurrent-payment/recurrent-payment-dto-converter'
-import { RecurrentPaymentConverter } from './domain/recurrent-payment/recurrent-payment-converter'
+import { RecurrentPaymentSheetsRepository } from './infraestructure/payment/recurrent-payment/recurrent-payment-sheets-repository'
 import { GenerateRecurrentPaymentsCmd } from './application/generate-recurrent-payments-cmd'
+import { PaymentSheets } from './infraestructure/payment/payment-sheets-repository'
+import { PaymentDtoConverter } from './infraestructure/payment/payment-dto-converter'
+import { PaymentConverter } from './infraestructure/payment/payment-converter'
 
 export function main() {
   const recurrentPaymentSheetsRepository = new RecurrentPaymentSheetsRepository(
-    SpreadsheetApp,
-    new RecurrentPaymentDtoConverter(),
-    new RecurrentPaymentConverter()
+    new PaymentSheets(SpreadsheetApp, new PaymentDtoConverter(), new PaymentConverter())
   )
   const generateRecurrentPaymentsCmd = new GenerateRecurrentPaymentsCmd(recurrentPaymentSheetsRepository)
   generateRecurrentPaymentsCmd.execute()
