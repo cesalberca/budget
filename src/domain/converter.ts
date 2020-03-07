@@ -1,3 +1,3 @@
-export interface Converter<T, S> {
-  convert(entity: T): S
+export interface Converter<In, Out> {
+  convert(entity: In): Out
 }
