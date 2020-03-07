@@ -14,6 +14,18 @@ export class PaymentMother {
       timestamp: Datetime.fromIso('2019-09-10')
     }
   }
+  static groceries(): Payment {
+    return {
+      owned: 28,
+      date: Datetime.fromIso('2019-09-10'),
+      from: 'Aisha',
+      to: ['César', 'Aisha'],
+      type: 'Groceries',
+      quantity: 56,
+      detail: 'Party',
+      timestamp: Datetime.fromIso('2019-09-10')
+    }
+  }
 
   static transport(): Payment {
     return {

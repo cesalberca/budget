@@ -47,6 +47,20 @@ describe('CalculateBalanceCmd', () => {
       { name: 'Aisha', quantity: -15 }
     ])
   })
+
+  it('should add recurrent and one off payments', () => {
+    const { summaryRepository, oneOffPaymentRepository, recurrentPaymentRepository, calculateBalanceCmd } = setup()
+    when(recurrentPaymentRepository.findAll()).thenReturn([PaymentMother.gym(), PaymentMother.transport()])
+    when(oneOffPaymentRepository.findAll()).thenReturn([PaymentMother.groceries()])
+
+    calculateBalanceCmd.execute()
+
+    const [actual] = capture(summaryRepository.updateBalances).last()
+    expect(actual).toEqual([
+      { name: 'César', quantity: -13 },
+      { name: 'Aisha', quantity: 13 }
+    ])
+  })
 })
 
 function setup() {
