@@ -33,6 +33,20 @@ describe('CalculateBalanceCmd', () => {
       { name: 'Aisha', quantity: -265 }
     ])
   })
+
+  it('should exclude payments made for yourself', () => {
+    const { summaryRepository, oneOffPaymentRepository, recurrentPaymentRepository, calculateBalanceCmd } = setup()
+    when(recurrentPaymentRepository.findAll()).thenReturn([PaymentMother.gym(), PaymentMother.transport()])
+    when(oneOffPaymentRepository.findAll()).thenReturn([])
+
+    calculateBalanceCmd.execute()
+
+    const [actual] = capture(summaryRepository.updateBalances).last()
+    expect(actual).toEqual([
+      { name: 'César', quantity: 15 },
+      { name: 'Aisha', quantity: -15 }
+    ])
+  })
 })
 
 function setup() {

@@ -14,14 +14,18 @@ export class CalculateBalanceCmd implements Command {
   execute(): void {
     const recurrentPayments = this.recurrentPaymentRepository.findAll()
 
-    const duplicatedBalances: Balance[] = recurrentPayments.flatMap(payment => {
-      return payment.to.map(paymentTo => {
-        return {
-          name: paymentTo,
-          quantity: paymentTo === payment.from ? payment.owned : -payment.owned
-        }
+    const duplicatedBalances: Balance[] = recurrentPayments
+      .filter(payment => {
+        return !(payment.to.length === 1 && payment.to[0] === payment.from)
       })
-    })
+      .flatMap(payment => {
+        return payment.to.map(paymentTo => {
+          return {
+            name: paymentTo,
+            quantity: paymentTo === payment.from ? payment.owned : -payment.owned
+          }
+        })
+      })
 
     const uniqueNames = Array.from(new Set(duplicatedBalances.map(balance => balance.name)))
     const balancesGroupedByName: Balance[][] = uniqueNames.map(name =>

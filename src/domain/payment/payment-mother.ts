@@ -15,6 +15,19 @@ export class PaymentMother {
     }
   }
 
+  static transport(): Payment {
+    return {
+      owned: 63,
+      date: Datetime.fromIso('2019-09-10'),
+      from: 'Aisha',
+      to: ['Aisha'],
+      type: 'Transport',
+      quantity: 63,
+      detail: 'transport',
+      timestamp: Datetime.fromIso('2019-09-10')
+    }
+  }
+
   static rent() {
     return {
       owned: 250,
@@ -26,6 +39,5 @@ export class PaymentMother {
       detail: 'Rent',
       timestamp: Datetime.fromIso('2019-09-10')
     }
-
   }
 }
