@@ -1,7 +1,11 @@
+import { Datetime } from '../datetime'
+
 export interface Payment {
   detail: string
-  payer: string
-  debtor: string
+  from: string
+  to: string[]
   type: string
   quantity: number
+  owned: number
+  date: Datetime
 }

@@ -16,7 +16,7 @@ describe('RecurrentPaymentSheetsRepository', () => {
   it('should insert a recurrent payments', () => {
     const { recurrentPaymentSheetsRepository, spreadsheetApp } = setup()
     const recurrentPayment: RecurrentPayment = {
-      debtor: 'César',
+      to: 'César',
       detail: 'foo',
       quantity: 1,
       type: 'bar'

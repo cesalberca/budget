@@ -11,8 +11,8 @@ describe('GenerateRecurrentPaymentsCmd', () => {
     const [last] = capture(recurrentPaymentRepository.create).beforeLast()
     const [beforeLast] = capture(recurrentPaymentRepository.create).last()
 
-    expect(last).toEqual({ debtor: 'foo', detail: 'bar', quantity: 1, type: 'baz' })
-    expect(beforeLast).toEqual({ debtor: 'baz', detail: 'bar', quantity: 1, type: 'foo' })
+    expect(last).toEqual({ to: 'foo', detail: 'bar', quantity: 1, type: 'baz' })
+    expect(beforeLast).toEqual({ to: 'baz', detail: 'bar', quantity: 1, type: 'foo' })
   })
 })
 
@@ -20,8 +20,8 @@ function setup() {
   const recurrentPaymentRepository = mock<RecurrentPaymentRepository>()
 
   when(recurrentPaymentRepository.findAll()).thenReturn([
-    { debtor: 'foo', detail: 'bar', quantity: 1, type: 'baz' },
-    { debtor: 'baz', detail: 'bar', quantity: 1, type: 'foo' }
+    { to: 'foo', detail: 'bar', quantity: 1, type: 'baz' },
+    { to: 'baz', detail: 'bar', quantity: 1, type: 'foo' }
   ])
   return {
     recurrentPaymentRepository,
