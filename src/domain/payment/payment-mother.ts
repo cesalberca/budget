@@ -32,7 +32,7 @@ export class PaymentMother {
       owned: 63,
       date: Datetime.fromIso('2019-09-10'),
       from: 'Aisha',
-      to: ['Aisha'],
+      to: [],
       type: 'Transport',
       quantity: 63,
       detail: 'transport',

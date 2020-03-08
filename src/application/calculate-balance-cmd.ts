@@ -22,14 +22,12 @@ export class CalculateBalanceCmd implements Command {
   }
 
   private getBalances(payments: Payment[]) {
-    const duplicatedBalances: Balance[] = payments
-      .filter(payment => !payment.to.every(x => x === payment.from))
-      .flatMap(payment =>
-        payment.to.map(paymentTo => ({
-          name: paymentTo,
-          quantity: paymentTo === payment.from ? payment.owned : -payment.owned
-        }))
-      )
+    const duplicatedBalances: Balance[] = payments.flatMap(payment =>
+      payment.to.map(paymentTo => ({
+        name: paymentTo,
+        quantity: paymentTo === payment.from ? payment.owned : -payment.owned
+      }))
+    )
 
     const uniqueNames = Array.from(new Set(duplicatedBalances.map(balance => balance.name)))
     const balancesGroupedByName: Balance[][] = uniqueNames.map(name =>
