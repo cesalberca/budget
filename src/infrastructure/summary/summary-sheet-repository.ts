@@ -10,9 +10,9 @@ export class SummarySheetRepository implements SummaryRepository {
 
   updateBalances(balances: Balance[]): void {
     const summary = this.spreadsheetApp.getActiveSpreadsheet().getSheetByName('Summary')!
-    balances.forEach(balance => {
+    balances.forEach((balance, index) => {
       const dto = this.balanceToBalanceDtoConverter.convert(balance)
-      summary.getRange(2, 1, 1, dto.length).setValues([dto])
+      summary.getRange(2 + index, 1, 1, dto.length).setValues([dto])
     })
   }
 }
