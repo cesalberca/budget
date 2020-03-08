@@ -50,7 +50,7 @@ describe('CalculateBalanceCmd', () => {
 
   it('should add recurrent and one off payments', () => {
     const { summaryRepository, oneOffPaymentRepository, recurrentPaymentRepository, calculateBalanceCmd } = setup()
-    when(recurrentPaymentRepository.findAll()).thenReturn([PaymentMother.gym(), PaymentMother.transport()])
+    when(recurrentPaymentRepository.findAll()).thenReturn([PaymentMother.gym()])
     when(oneOffPaymentRepository.findAll()).thenReturn([PaymentMother.groceries()])
 
     calculateBalanceCmd.execute()
@@ -59,6 +59,34 @@ describe('CalculateBalanceCmd', () => {
     expect(actual).toEqual([
       { name: 'César', quantity: -13 },
       { name: 'Aisha', quantity: 13 }
+    ])
+  })
+
+  it('should handle loans', () => {
+    const { summaryRepository, oneOffPaymentRepository, recurrentPaymentRepository, calculateBalanceCmd } = setup()
+    when(recurrentPaymentRepository.findAll()).thenReturn([])
+    when(oneOffPaymentRepository.findAll()).thenReturn([PaymentMother.loan(), PaymentMother.loan()])
+
+    calculateBalanceCmd.execute()
+
+    const [actual] = capture(summaryRepository.updateBalances).last()
+    expect(actual).toEqual([
+      { name: 'César', quantity: 200 },
+      { name: 'Aisha', quantity: -200 }
+    ])
+  })
+
+  it('should handle loans mixed with payments', () => {
+    const { summaryRepository, oneOffPaymentRepository, recurrentPaymentRepository, calculateBalanceCmd } = setup()
+    when(recurrentPaymentRepository.findAll()).thenReturn([])
+    when(oneOffPaymentRepository.findAll()).thenReturn([PaymentMother.groceries(), PaymentMother.loan()])
+
+    calculateBalanceCmd.execute()
+
+    const [actual] = capture(summaryRepository.updateBalances).last()
+    expect(actual).toEqual([
+      { name: 'Aisha', quantity: -72 },
+      { name: 'César', quantity: 72 }
     ])
   })
 })

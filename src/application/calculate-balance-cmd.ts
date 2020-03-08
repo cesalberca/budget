@@ -22,14 +22,18 @@ export class CalculateBalanceCmd implements Command {
   }
 
   private getBalances(payments: Payment[]) {
-    const duplicatedBalances: Balance[] = payments.flatMap(payment =>
-      payment.to.map(paymentTo => ({
+    const duplicatedBalances: Balance[] = payments.flatMap(payment => {
+      if (!payment.to.length) {
+        return []
+      }
+      const allPayers = this.getUnique([payment.from, ...payment.to])
+      return allPayers.map(paymentTo => ({
         name: paymentTo,
-        quantity: paymentTo === payment.from ? payment.owned : -payment.owned
+        quantity: paymentTo === payment.from ? -payment.owned : payment.owned
       }))
-    )
+    })
 
-    const uniqueNames = Array.from(new Set(duplicatedBalances.map(balance => balance.name)))
+    const uniqueNames = this.getUnique(duplicatedBalances.map(balance => balance.name)).filter(name => name !== '')
     const balancesGroupedByName: Balance[][] = uniqueNames.map(name =>
       duplicatedBalances.filter(balance => balance.name === name)
     )
@@ -43,5 +47,9 @@ export class CalculateBalanceCmd implements Command {
       )
     )
     return balances
+  }
+
+  private getUnique<T>(array: T[]) {
+    return Array.from(new Set(array))
   }
 }
