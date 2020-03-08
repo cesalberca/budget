@@ -1,13 +1,13 @@
-import { PaymentDtoConverter } from './payment-dto-converter'
-import { PaymentConverter } from './payment-converter'
+import { PaymentToPaymentDtoConverter } from './payment-to-payment-dto-converter'
 import { Payment } from '../../domain/payment/payment'
 import { PaymentDto } from './payment-dto'
+import { PaymentDtoToPaymentConverter } from './payment-dto-to-payment-converter'
 
 export class PaymentSheets {
   constructor(
     private readonly spreadsheetApp: typeof SpreadsheetApp,
-    private readonly paymentDtoConverter: PaymentDtoConverter,
-    private readonly paymentConverter: PaymentConverter
+    private readonly paymentDtoConverter: PaymentDtoToPaymentConverter,
+    private readonly paymentConverter: PaymentToPaymentDtoConverter
   ) {}
 
   findAll(sheet: string): Payment[] {

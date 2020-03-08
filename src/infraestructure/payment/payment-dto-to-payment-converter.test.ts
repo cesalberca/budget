@@ -1,8 +1,8 @@
 import { Payment } from '../../domain/payment/payment'
 import { Datetime } from '../../domain/datetime'
-import { PaymentDtoConverter } from './payment-dto-converter'
+import { PaymentDtoToPaymentConverter } from './payment-dto-to-payment-converter'
 
-describe('PaymentDtoConverter', () => {
+describe('PaymentDtoToPaymentConverter', () => {
   it('should convert tuple to object', () => {
     const { recurrentDtoConverter } = setup()
     const expected: Payment = {
@@ -24,6 +24,6 @@ describe('PaymentDtoConverter', () => {
 
 function setup() {
   return {
-    recurrentDtoConverter: new PaymentDtoConverter()
+    recurrentDtoConverter: new PaymentDtoToPaymentConverter()
   }
 }

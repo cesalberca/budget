@@ -1,9 +1,9 @@
 import { anyNumber, anyString, anything, instance, mock, verify, when } from 'ts-mockito'
 import { Payment } from '../../domain/payment/payment'
 import { PaymentSheets } from './payment-sheets-repository'
-import { PaymentDtoConverter } from './payment-dto-converter'
-import { PaymentConverter } from './payment-converter'
+import { PaymentToPaymentDtoConverter } from './payment-to-payment-dto-converter'
 import { Datetime } from '../../domain/datetime'
+import { PaymentDtoToPaymentConverter } from './payment-dto-to-payment-converter'
 
 describe('PaymentSheets', () => {
   it('should find payments', () => {
@@ -44,8 +44,8 @@ function setup() {
   when(sheet.insertRowBefore(anyNumber())).thenReturn(instance(sheet))
   when(sheet.getRange(anyNumber(), anyNumber(), anyNumber(), anyNumber())).thenReturn(instance(range))
   when(range.getValues()).thenReturn([[]])
-  const paymentDtoConverter = mock(PaymentDtoConverter)
-  const paymentConverter = mock(PaymentConverter)
+  const paymentDtoConverter = mock(PaymentDtoToPaymentConverter)
+  const paymentConverter = mock(PaymentToPaymentDtoConverter)
   when(paymentConverter.convert(anything())).thenReturn(['', '', '', '', '', 1, '', 1])
   return {
     spreadsheetApp,

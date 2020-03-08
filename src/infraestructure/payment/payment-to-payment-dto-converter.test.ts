@@ -1,8 +1,8 @@
 import { PaymentDto } from './payment-dto'
 import { Datetime } from '../../domain/datetime'
-import { PaymentConverter } from './payment-converter'
+import { PaymentToPaymentDtoConverter } from './payment-to-payment-dto-converter'
 
-describe('OneOffPaymentDtoConverter', () => {
+describe('PaymentToPaymentDtoConverter', () => {
   it('should convert tuple to object', () => {
     const { paymentConverter } = setup()
     const expected: PaymentDto = ['2019-01-10T00:00:00.000Z', 'a', 'b', 'c,e', 'd', 1, '2019-01-10T00:00:00.000Z', 1]
@@ -24,6 +24,6 @@ describe('OneOffPaymentDtoConverter', () => {
 
 function setup() {
   return {
-    paymentConverter: new PaymentConverter()
+    paymentConverter: new PaymentToPaymentDtoConverter()
   }
 }
