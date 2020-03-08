@@ -7,6 +7,5 @@ export interface Payment {
   to: string[]
   type: string
   quantity: number
-  owned: number
   date: Datetime
 }

@@ -4,7 +4,6 @@ import { Datetime } from '../datetime'
 export class PaymentMother {
   static gym(): Payment {
     return {
-      owned: -15,
       date: Datetime.fromIso('2019-09-10'),
       from: 'César',
       to: ['César', 'Aisha'],
@@ -16,7 +15,6 @@ export class PaymentMother {
   }
   static groceries(): Payment {
     return {
-      owned: -28,
       date: Datetime.fromIso('2019-09-10'),
       from: 'Aisha',
       to: ['César', 'Aisha'],
@@ -29,7 +27,6 @@ export class PaymentMother {
 
   static transport(): Payment {
     return {
-      owned: -63,
       date: Datetime.fromIso('2019-09-10'),
       from: 'Aisha',
       to: [],
@@ -40,9 +37,8 @@ export class PaymentMother {
     }
   }
 
-  static rent() {
+  static rent(): Payment {
     return {
-      owned: -250,
       date: Datetime.fromIso('2019-09-10'),
       from: 'César',
       to: ['César', 'Aisha'],
@@ -53,9 +49,8 @@ export class PaymentMother {
     }
   }
 
-  static loan() {
+  static loan(): Payment {
     return {
-      owned: -100,
       date: Datetime.fromIso('2019-09-10'),
       from: 'César',
       to: ['Aisha'],

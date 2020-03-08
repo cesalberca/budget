@@ -23,7 +23,6 @@ describe('PaymentSheets', () => {
       detail: 'foo',
       quantity: 1,
       date: Datetime.fromIso('2019-09-10'),
-      owned: 1,
       type: 'bar'
     }
 
@@ -46,7 +45,7 @@ function setup() {
   when(range.getValues()).thenReturn([[]])
   const paymentDtoConverter = mock(PaymentDtoToPaymentConverter)
   const paymentConverter = mock(PaymentToPaymentDtoConverter)
-  when(paymentConverter.convert(anything())).thenReturn(['', '', '', '', '', 1, '', 1])
+  when(paymentConverter.convert(anything())).thenReturn(['', '', '', '', '', 1, ''])
   return {
     spreadsheetApp,
     spreadsheet,

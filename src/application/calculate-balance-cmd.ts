@@ -27,9 +27,10 @@ export class CalculateBalanceCmd implements Command {
         return []
       }
       const allPayers = this.getUnique([payment.from, ...payment.to])
+      const owned = payment.quantity / payment.to.length
       return allPayers.map(paymentTo => ({
         name: paymentTo,
-        quantity: paymentTo === payment.from ? -payment.owned : payment.owned
+        quantity: paymentTo === payment.from ? -owned : owned
       }))
     })
 
