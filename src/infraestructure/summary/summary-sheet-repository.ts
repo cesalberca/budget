@@ -14,7 +14,7 @@ export class SummarySheetRepository implements SummaryRepository {
       const dto = this.balanceToBalanceDtoConverter.convert(balance)
       summary
         .insertRowBefore(2)
-        .getRange(2, 1, 1, dto.length + 1)
+        .getRange(2, 1, 1, dto.length)
         .setValues([dto])
     })
   }
