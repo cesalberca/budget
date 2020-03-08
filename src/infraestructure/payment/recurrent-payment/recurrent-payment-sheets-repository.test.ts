@@ -8,7 +8,7 @@ describe('RecurrentPaymentSheetsRepository', () => {
 
     recurrentPaymentSheetsRepository.findAll()
 
-    verify(paymentSheets.findAll('Recurrent')).once()
+    verify(paymentSheets.findAll('RecurrentPayments')).once()
   })
 })
 

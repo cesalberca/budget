@@ -6,7 +6,7 @@ export class RecurrentPaymentSheetsRepository implements RecurrentPaymentReposit
   constructor(private readonly paymentSheets: PaymentSheets) {}
 
   findAll(): Payment[] {
-    return this.paymentSheets.findAll('Recurrent')
+    return this.paymentSheets.findAll('RecurrentPayments')
   }
 
   create(payment: Payment): void {
