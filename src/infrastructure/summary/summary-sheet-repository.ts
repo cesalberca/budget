@@ -12,10 +12,7 @@ export class SummarySheetRepository implements SummaryRepository {
     const summary = this.spreadsheetApp.getActiveSpreadsheet().getSheetByName('Summary')!
     balances.forEach(balance => {
       const dto = this.balanceToBalanceDtoConverter.convert(balance)
-      summary
-        .insertRowBefore(2)
-        .getRange(2, 1, 1, dto.length)
-        .setValues([dto])
+      summary.getRange(2, 1, 1, dto.length).setValues([dto])
     })
   }
 }

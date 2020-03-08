@@ -10,6 +10,6 @@ export class RecurrentPaymentSheetsRepository implements RecurrentPaymentReposit
   }
 
   create(payment: Payment): void {
-    this.paymentSheets.create('RecurrentPayments', payment)
+    this.paymentSheets.insert('RecurrentPayments', payment)
   }
 }

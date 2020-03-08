@@ -16,7 +16,7 @@ export class PaymentSheets {
     return data.slice(1).map(this.paymentDtoConverter.convert)
   }
 
-  create(sheet: string, payment: Payment): void {
+  insert(sheet: string, payment: Payment): void {
     const recurrent = this.spreadsheetApp.getActiveSpreadsheet().getSheetByName(sheet)!
     const entity = this.paymentConverter.convert(payment)
     recurrent

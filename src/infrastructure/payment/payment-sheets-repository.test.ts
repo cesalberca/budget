@@ -27,7 +27,7 @@ describe('PaymentSheets', () => {
       type: 'bar'
     }
 
-    paymentSheetsRepository.create('foo', payment)
+    paymentSheetsRepository.insert('foo', payment)
 
     verify(spreadsheetApp)
   })
