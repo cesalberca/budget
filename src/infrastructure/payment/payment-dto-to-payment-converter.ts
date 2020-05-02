@@ -6,7 +6,7 @@ import { Payment } from '../../domain/payment/payment'
 export class PaymentDtoToPaymentConverter implements Converter<PaymentDto, Payment> {
   convert([timestamp, detail, from, to, type, quantity, date]: PaymentDto): Payment {
     return {
-      timestamp: Datetime.fromIso(timestamp),
+      timestamp: timestamp === '' ? Datetime.now() : Datetime.fromIso(timestamp),
       from,
       quantity,
       detail,
@@ -15,7 +15,7 @@ export class PaymentDtoToPaymentConverter implements Converter<PaymentDto, Payme
         .map(name => name.trim())
         .filter(name => name !== ''),
       type,
-      date: Datetime.fromIso(date),
+      date: date === '' ? Datetime.now() : Datetime.fromIso(date)
     }
   }
 }
