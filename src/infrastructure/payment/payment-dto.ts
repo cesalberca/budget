@@ -1,2 +1,17 @@
-// Timestamp Detail From    To    Type Quantity   Date
-export type PaymentDto = [string, string, string, string, string, number, string]
+// prettier-ignore
+export type PaymentDto = [
+  // Timestamp
+  string,
+  // Detail
+  string,
+  // From
+  string,
+  // To
+  string,
+  // Type
+  string,
+  // Quantity
+  number,
+  // Date
+  string
+]
