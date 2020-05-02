@@ -9,6 +9,10 @@ export class RecurrentPaymentSheetsRepository implements RecurrentPaymentReposit
     return this.paymentSheets.findAll('RecurrentPayments')
   }
 
+  findRecurrent(): Payment[] {
+    return this.paymentSheets.findAll('Recurrent')
+  }
+
   create(payment: Payment): void {
     this.paymentSheets.insert('RecurrentPayments', payment)
   }

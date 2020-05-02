@@ -5,7 +5,7 @@ export class GenerateRecurrentPaymentsCmd implements Command {
   constructor(private readonly recurrentPaymentRepository: RecurrentPaymentRepository) {}
 
   execute(): void {
-    const payments = this.recurrentPaymentRepository.findAll()
+    const payments = this.recurrentPaymentRepository.findRecurrent()
     payments.forEach(payment => this.recurrentPaymentRepository.create(payment))
   }
 }

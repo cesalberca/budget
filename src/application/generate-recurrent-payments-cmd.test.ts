@@ -6,7 +6,7 @@ import { PaymentMother } from '../domain/payment/payment-mother'
 describe('GenerateRecurrentPaymentsCmd', () => {
   it('should find every recurrent payment and create a new entry', () => {
     const { generateRecurrentPaymentsCmd, recurrentPaymentRepository } = setup()
-    when(recurrentPaymentRepository.findAll()).thenReturn([PaymentMother.gym(), PaymentMother.rent()])
+    when(recurrentPaymentRepository.findRecurrent()).thenReturn([PaymentMother.gym(), PaymentMother.rent()])
 
     generateRecurrentPaymentsCmd.execute()
 

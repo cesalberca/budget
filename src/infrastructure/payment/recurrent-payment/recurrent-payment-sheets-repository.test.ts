@@ -3,12 +3,20 @@ import { RecurrentPaymentSheetsRepository } from './recurrent-payment-sheets-rep
 import { PaymentSheets } from '../payment-sheets-repository'
 
 describe('RecurrentPaymentSheetsRepository', () => {
-  it('should use the payments sheets', () => {
+  it('should find all', () => {
     const { recurrentPaymentSheetsRepository, paymentSheets } = setup()
 
     recurrentPaymentSheetsRepository.findAll()
 
     verify(paymentSheets.findAll('RecurrentPayments')).once()
+  })
+
+  it('should find recurrent', () => {
+    const { recurrentPaymentSheetsRepository, paymentSheets } = setup()
+
+    recurrentPaymentSheetsRepository.findRecurrent()
+
+    verify(paymentSheets.findAll('Recurrent')).once()
   })
 })
 
