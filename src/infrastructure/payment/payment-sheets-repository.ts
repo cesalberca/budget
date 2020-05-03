@@ -21,7 +21,7 @@ export class PaymentSheets {
     const entity = this.paymentConverter.convert(payment)
     recurrent
       .insertRowBefore(2)
-      .getRange(2, 1, 1, entity.length + 1)
-      .setValues([[...entity, new Date()]])
+      .getRange(2, 1, 1, entity.length)
+      .setValues([entity])
   }
 }
