@@ -25,6 +25,6 @@ function setup() {
 
   return {
     paymentSheets,
-    recurrentPaymentSheetsRepository: new RecurrentPaymentSheetsRepository(instance(paymentSheets))
+    recurrentPaymentSheetsRepository: new RecurrentPaymentSheetsRepository(instance(paymentSheets)),
   }
 }

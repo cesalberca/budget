@@ -23,7 +23,7 @@ describe('PaymentSheets', () => {
       detail: 'foo',
       quantity: 1,
       date: Datetime.fromIso('2019-09-10'),
-      type: 'bar'
+      type: 'bar',
     }
 
     paymentSheetsRepository.insert('foo', payment)
@@ -53,7 +53,7 @@ function setup() {
     paymentSheetsRepository: new PaymentSheets(
       instance(spreadsheetApp),
       instance(paymentDtoConverter),
-      instance(paymentConverter)
-    )
+      instance(paymentConverter),
+    ),
   }
 }

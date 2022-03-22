@@ -22,6 +22,6 @@ function setup() {
 
   return {
     recurrentPaymentRepository,
-    generateRecurrentPaymentsCmd: new GenerateRecurrentPaymentsCmd(instance(recurrentPaymentRepository))
+    generateRecurrentPaymentsCmd: new GenerateRecurrentPaymentsCmd(instance(recurrentPaymentRepository)),
   }
 }

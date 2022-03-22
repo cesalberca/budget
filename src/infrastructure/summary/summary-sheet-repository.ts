@@ -5,7 +5,7 @@ import { BalanceToBalanceDtoConverter } from './balance-to-balance-dto-converter
 export class SummarySheetRepository implements SummaryRepository {
   constructor(
     private readonly spreadsheetApp: typeof SpreadsheetApp,
-    private readonly balanceToBalanceDtoConverter: BalanceToBalanceDtoConverter
+    private readonly balanceToBalanceDtoConverter: BalanceToBalanceDtoConverter,
   ) {}
 
   updateBalances(balances: Balance[]): void {

@@ -15,7 +15,7 @@ export class PaymentDtoToPaymentConverter implements Converter<PaymentDto, Payme
         .map(name => name.trim())
         .filter(name => name !== ''),
       type,
-      date: date === '' || date === undefined ? Datetime.now() : Datetime.fromIso(date)
+      date: date === '' || date === undefined ? Datetime.now() : Datetime.fromIso(date),
     }
   }
 }

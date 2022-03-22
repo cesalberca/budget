@@ -12,7 +12,7 @@ describe('PaymentDtoToPaymentConverter', () => {
       to: ['c', 'e'],
       type: 'd',
       quantity: 1,
-      date: Datetime.fromIso('2019-09-10')
+      date: Datetime.fromIso('2019-09-10'),
     }
 
     const actual = recurrentDtoConverter.convert(['2019-09-10', 'a', 'b', 'c,e', 'd', 1, '2019-09-10'])
@@ -23,6 +23,6 @@ describe('PaymentDtoToPaymentConverter', () => {
 
 function setup() {
   return {
-    recurrentDtoConverter: new PaymentDtoToPaymentConverter()
+    recurrentDtoConverter: new PaymentDtoToPaymentConverter(),
   }
 }

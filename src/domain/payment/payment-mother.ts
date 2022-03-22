@@ -10,7 +10,7 @@ export class PaymentMother {
       type: 'Gym',
       quantity: -30,
       detail: 'Gym',
-      timestamp: Datetime.fromIso('2019-09-10')
+      timestamp: Datetime.fromIso('2019-09-10'),
     }
   }
   static groceries(): Payment {
@@ -21,7 +21,7 @@ export class PaymentMother {
       type: 'Groceries',
       quantity: -56,
       detail: 'Party',
-      timestamp: Datetime.fromIso('2019-09-10')
+      timestamp: Datetime.fromIso('2019-09-10'),
     }
   }
 
@@ -33,7 +33,7 @@ export class PaymentMother {
       type: 'Transport',
       quantity: -63,
       detail: 'transport',
-      timestamp: Datetime.fromIso('2019-09-10')
+      timestamp: Datetime.fromIso('2019-09-10'),
     }
   }
 
@@ -45,7 +45,7 @@ export class PaymentMother {
       type: 'Gym',
       quantity: -500,
       detail: 'Rent',
-      timestamp: Datetime.fromIso('2019-09-10')
+      timestamp: Datetime.fromIso('2019-09-10'),
     }
   }
 
@@ -57,7 +57,7 @@ export class PaymentMother {
       type: 'Misc',
       quantity: -100,
       detail: 'Loan',
-      timestamp: Datetime.fromIso('2019-09-10')
+      timestamp: Datetime.fromIso('2019-09-10'),
     }
   }
 }

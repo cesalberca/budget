@@ -10,7 +10,7 @@ import { PaymentDtoToPaymentConverter } from './infrastructure/payment/payment-d
 
 export function main() {
   const recurrentPaymentSheetsRepository = new RecurrentPaymentSheetsRepository(
-    new PaymentSheets(SpreadsheetApp, new PaymentDtoToPaymentConverter(), new PaymentToPaymentDtoConverter())
+    new PaymentSheets(SpreadsheetApp, new PaymentDtoToPaymentConverter(), new PaymentToPaymentDtoConverter()),
   )
   const generateRecurrentPaymentsCmd = new GenerateRecurrentPaymentsCmd(recurrentPaymentSheetsRepository)
   generateRecurrentPaymentsCmd.execute()
@@ -18,17 +18,17 @@ export function main() {
 
 export function calculateBalances() {
   const recurrentPaymentSheetsRepository = new RecurrentPaymentSheetsRepository(
-    new PaymentSheets(SpreadsheetApp, new PaymentDtoToPaymentConverter(), new PaymentToPaymentDtoConverter())
+    new PaymentSheets(SpreadsheetApp, new PaymentDtoToPaymentConverter(), new PaymentToPaymentDtoConverter()),
   )
   const oneOffPaymentSheetsRepository = new OneOffPaymentSheetsRepository(
-    new PaymentSheets(SpreadsheetApp, new PaymentDtoToPaymentConverter(), new PaymentToPaymentDtoConverter())
+    new PaymentSheets(SpreadsheetApp, new PaymentDtoToPaymentConverter(), new PaymentToPaymentDtoConverter()),
   )
 
   const summarySheetRepository = new SummarySheetRepository(SpreadsheetApp, new BalanceToBalanceDtoConverter())
   const generateRecurrentPaymentsCmd = new CalculateBalanceCmd(
     oneOffPaymentSheetsRepository,
     recurrentPaymentSheetsRepository,
-    summarySheetRepository
+    summarySheetRepository,
   )
   generateRecurrentPaymentsCmd.execute()
 }

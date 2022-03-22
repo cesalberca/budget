@@ -16,7 +16,7 @@ describe('CalculateBalanceCmd', () => {
     const [actual] = capture(summaryRepository.updateBalances).last()
     expect(actual).toEqual([
       { name: 'César', quantity: 15 },
-      { name: 'Aisha', quantity: -15 }
+      { name: 'Aisha', quantity: -15 },
     ])
   })
 
@@ -30,7 +30,7 @@ describe('CalculateBalanceCmd', () => {
     const [actual] = capture(summaryRepository.updateBalances).last()
     expect(actual).toEqual([
       { name: 'César', quantity: 265 },
-      { name: 'Aisha', quantity: -265 }
+      { name: 'Aisha', quantity: -265 },
     ])
   })
 
@@ -44,7 +44,7 @@ describe('CalculateBalanceCmd', () => {
     const [actual] = capture(summaryRepository.updateBalances).last()
     expect(actual).toEqual([
       { name: 'César', quantity: 15 },
-      { name: 'Aisha', quantity: -15 }
+      { name: 'Aisha', quantity: -15 },
     ])
   })
 
@@ -58,7 +58,7 @@ describe('CalculateBalanceCmd', () => {
     const [actual] = capture(summaryRepository.updateBalances).last()
     expect(actual).toEqual([
       { name: 'César', quantity: -13 },
-      { name: 'Aisha', quantity: 13 }
+      { name: 'Aisha', quantity: 13 },
     ])
   })
 
@@ -72,7 +72,7 @@ describe('CalculateBalanceCmd', () => {
     const [actual] = capture(summaryRepository.updateBalances).last()
     expect(actual).toEqual([
       { name: 'César', quantity: 200 },
-      { name: 'Aisha', quantity: -200 }
+      { name: 'Aisha', quantity: -200 },
     ])
   })
 
@@ -86,7 +86,7 @@ describe('CalculateBalanceCmd', () => {
     const [actual] = capture(summaryRepository.updateBalances).last()
     expect(actual).toEqual([
       { name: 'Aisha', quantity: -72 },
-      { name: 'César', quantity: 72 }
+      { name: 'César', quantity: 72 },
     ])
   })
 })
@@ -103,7 +103,7 @@ function setup() {
     calculateBalanceCmd: new CalculateBalanceCmd(
       instance(oneOffPaymentRepository),
       instance(recurrentPaymentRepository),
-      instance(summaryRepository)
-    )
+      instance(summaryRepository),
+    ),
   }
 }

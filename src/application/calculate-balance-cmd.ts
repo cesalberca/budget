@@ -9,7 +9,7 @@ export class CalculateBalanceCmd implements Command {
   constructor(
     readonly oneOffPaymentRepository: OneOffPaymentRepository,
     private readonly recurrentPaymentRepository: RecurrentPaymentRepository,
-    readonly summaryRepository: SummaryRepository
+    readonly summaryRepository: SummaryRepository,
   ) {}
 
   execute(): void {
@@ -30,22 +30,22 @@ export class CalculateBalanceCmd implements Command {
       const owned = payment.quantity / payment.to.length
       return allPayers.map(paymentTo => ({
         name: paymentTo,
-        quantity: paymentTo === payment.from ? -owned : owned
+        quantity: paymentTo === payment.from ? -owned : owned,
       }))
     })
 
     const uniqueNames = this.getUnique(duplicatedBalances.map(balance => balance.name)).filter(name => name !== '')
     const balancesGroupedByName: Balance[][] = uniqueNames.map(name =>
-      duplicatedBalances.filter(balance => balance.name === name)
+      duplicatedBalances.filter(balance => balance.name === name),
     )
     const balances = balancesGroupedByName.map(balances =>
       balances.reduce(
         (previousValue, currentValue) => ({
           name: currentValue.name,
-          quantity: previousValue.quantity + currentValue.quantity
+          quantity: previousValue.quantity + currentValue.quantity,
         }),
-        { name: '', quantity: 0 }
-      )
+        { name: '', quantity: 0 },
+      ),
     )
     return balances
   }

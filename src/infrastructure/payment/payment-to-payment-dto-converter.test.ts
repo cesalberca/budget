@@ -14,7 +14,7 @@ describe('PaymentToPaymentDtoConverter', () => {
       to: ['c', 'e'],
       type: 'd',
       quantity: 1,
-      date: Datetime.fromIso('2019-01-10')
+      date: Datetime.fromIso('2019-01-10'),
     })
 
     expect(actual).toEqual(expected)
@@ -23,6 +23,6 @@ describe('PaymentToPaymentDtoConverter', () => {
 
 function setup() {
   return {
-    paymentConverter: new PaymentToPaymentDtoConverter()
+    paymentConverter: new PaymentToPaymentDtoConverter(),
   }
 }

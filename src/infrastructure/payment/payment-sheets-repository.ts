@@ -7,7 +7,7 @@ export class PaymentSheets {
   constructor(
     private readonly spreadsheetApp: typeof SpreadsheetApp,
     private readonly paymentDtoConverter: PaymentDtoToPaymentConverter,
-    private readonly paymentConverter: PaymentToPaymentDtoConverter
+    private readonly paymentConverter: PaymentToPaymentDtoConverter,
   ) {}
 
   findAll(sheet: string): Payment[] {
@@ -19,9 +19,6 @@ export class PaymentSheets {
   insert(sheet: string, payment: Payment): void {
     const recurrent = this.spreadsheetApp.getActiveSpreadsheet().getSheetByName(sheet)!
     const entity = this.paymentConverter.convert(payment)
-    recurrent
-      .insertRowBefore(2)
-      .getRange(2, 1, 1, entity.length)
-      .setValues([entity])
+    recurrent.insertRowBefore(2).getRange(2, 1, 1, entity.length).setValues([entity])
   }
 }
