@@ -8,7 +8,7 @@ import { SummarySheetRepository } from './infrastructure/summary/summary-sheet-r
 import { BalanceToBalanceDtoConverter } from './infrastructure/summary/balance-to-balance-dto-converter'
 import { PaymentDtoToPaymentConverter } from './infrastructure/payment/payment-dto-to-payment-converter'
 
-export function main() {
+function main() {
   const recurrentPaymentSheetsRepository = new RecurrentPaymentSheetsRepository(
     new PaymentSheets(SpreadsheetApp, new PaymentDtoToPaymentConverter(), new PaymentToPaymentDtoConverter()),
   )
@@ -16,7 +16,7 @@ export function main() {
   generateRecurrentPaymentsCmd.execute()
 }
 
-export function calculateBalances() {
+function calculateBalances() {
   const recurrentPaymentSheetsRepository = new RecurrentPaymentSheetsRepository(
     new PaymentSheets(SpreadsheetApp, new PaymentDtoToPaymentConverter(), new PaymentToPaymentDtoConverter()),
   )
