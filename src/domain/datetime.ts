@@ -10,6 +10,7 @@ export class Datetime {
   }
 
   toIso() {
-    return this.date.toISOString()
+    // YYYY/MM/DD
+    return this.date.toLocaleDateString('en-ZA')
   }
 }

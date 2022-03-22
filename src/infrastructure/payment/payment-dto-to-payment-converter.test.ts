@@ -8,14 +8,12 @@ describe('PaymentDtoToPaymentConverter', () => {
     const expected: Payment = {
       timestamp: Datetime.fromIso('2019-09-10'),
       detail: 'a',
-      from: 'b',
-      to: ['c', 'e'],
       type: 'd',
       quantity: 1,
       date: Datetime.fromIso('2019-09-10'),
     }
 
-    const actual = recurrentDtoConverter.convert(['2019-09-10', 'a', 'b', 'c,e', 'd', 1, '2019-09-10'])
+    const actual = recurrentDtoConverter.convert(['2019-09-10', 'a', 'b', 1, '2019-09-10'])
 
     expect(actual).toEqual(expected)
   })

@@ -18,8 +18,6 @@ describe('PaymentSheets', () => {
     const { paymentSheetsRepository, spreadsheetApp } = setup()
     const payment: Payment = {
       timestamp: Datetime.fromIso('2019-09-10'),
-      to: ['César'],
-      from: 'César',
       detail: 'foo',
       quantity: 1,
       date: Datetime.fromIso('2019-09-10'),
@@ -45,7 +43,7 @@ function setup() {
   when(range.getValues()).thenReturn([[]])
   const paymentDtoConverter = mock(PaymentDtoToPaymentConverter)
   const paymentConverter = mock(PaymentToPaymentDtoConverter)
-  when(paymentConverter.convert(anything())).thenReturn(['', '', '', '', '', 1, ''])
+  when(paymentConverter.convert(anything())).thenReturn(['', '', '', 1, ''])
   return {
     spreadsheetApp,
     spreadsheet,

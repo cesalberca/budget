@@ -1,9 +1,11 @@
 {
   "compilerOptions": {
     "strict": true,
+    "noEmit": true,
     "target": "es5",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    "skipLibCheck": true,
     "lib": ["esnext"],
     "experimentalDecorators": true
   }

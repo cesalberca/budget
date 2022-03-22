@@ -5,8 +5,6 @@ export class PaymentMother {
   static gym(): Payment {
     return {
       date: Datetime.fromIso('2019-09-10'),
-      from: 'César',
-      to: ['César', 'Aisha'],
       type: 'Gym',
       quantity: -30,
       detail: 'Gym',
@@ -16,8 +14,6 @@ export class PaymentMother {
   static groceries(): Payment {
     return {
       date: Datetime.fromIso('2019-09-10'),
-      from: 'Aisha',
-      to: ['César', 'Aisha'],
       type: 'Groceries',
       quantity: -56,
       detail: 'Party',
@@ -28,8 +24,6 @@ export class PaymentMother {
   static transport(): Payment {
     return {
       date: Datetime.fromIso('2019-09-10'),
-      from: 'Aisha',
-      to: [],
       type: 'Transport',
       quantity: -63,
       detail: 'transport',
@@ -40,8 +34,6 @@ export class PaymentMother {
   static rent(): Payment {
     return {
       date: Datetime.fromIso('2019-09-10'),
-      from: 'César',
-      to: ['César', 'Aisha'],
       type: 'Gym',
       quantity: -500,
       detail: 'Rent',
@@ -52,8 +44,6 @@ export class PaymentMother {
   static loan(): Payment {
     return {
       date: Datetime.fromIso('2019-09-10'),
-      from: 'César',
-      to: ['Aisha'],
       type: 'Misc',
       quantity: -100,
       detail: 'Loan',

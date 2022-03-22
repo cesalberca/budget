@@ -5,6 +5,7 @@
   "repository": "",
   "main": "index.js",
   "scripts": {
+    "compile": "tsc",
     "build": "rollup --config",
     "deploy": "clasp push",
     "test": "jest --coverage",

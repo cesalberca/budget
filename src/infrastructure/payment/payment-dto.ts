@@ -4,10 +4,6 @@ export type PaymentDto = [
   string,
   // Detail
   string,
-  // From
-  string,
-  // To
-  string,
   // Type
   string,
   // Quantity
